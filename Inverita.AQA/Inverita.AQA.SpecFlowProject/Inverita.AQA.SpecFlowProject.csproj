@@ -19,4 +19,9 @@
       <ProjectReference Include="..\Inverita.AQA.FirstTest\Inverita.AQA.FirstTest.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Steps\Users\CRUD" />
+      <Folder Include="Steps\Users\Registration" />
+    </ItemGroup>
+
 </Project>

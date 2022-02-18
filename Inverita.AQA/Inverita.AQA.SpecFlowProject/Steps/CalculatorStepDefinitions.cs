@@ -17,9 +17,26 @@ namespace Inverita.AQA.SpecFlowProject.Steps
             _scenarioContext = scenarioContext;
         }
 
+        [Given("Step 1")]
+        [Given("I close Nurses popup")]
+        [Given("I close Patients popup")]
+        // [When("Step 2")]
+        // [Then("Step 3")]
+        public void IWillNeverBeOld()
+        {
+            //_scenarioContext.
+            // Submit
+            // Popup.Close();
+        }
+
         [Given("the first number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
         {
+            
+            var tt = _scenarioContext.Get<string>("test");
+            
+            //DatabaseHelpers.GetUsers();
+            
             _myCalculator.FirstNumber = number;
             
             
@@ -39,35 +56,32 @@ namespace Inverita.AQA.SpecFlowProject.Steps
         {
             // implement act (action) logic
 
-            var res = _myCalculator.Add();
-            _scenarioContext.Add("res", res);
-            
-            
-            
-            
-            
-            
+            // var res = _myCalculator.Add();
+            // _scenarioContext.Add("res", res);
             
             //--------------------------------
 
             var firstNum = _scenarioContext.Get<int>("first_number");
             var secondNum = _scenarioContext.Get<int>("second_number");
 
-            _scenarioContext.Add("result", MyCalculator.Add(firstNum, secondNum));
+            _scenarioContext.Add(Constants.ResultKey, MyCalculator.Add(firstNum, secondNum));
         }
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)
         {
             //TODO: implement assert (verification) logic
-            var res = _scenarioContext.Get<int>("res");
+            var res = _scenarioContext.Get<int>(Constants.ResultKey);
             Assert.That(res, Is.EqualTo(result));
             
             //-------------------
             
-            var resultValue = _scenarioContext.Get<int>("result");
             
-            Assert.That(resultValue, Is.EqualTo(result), "Wrong calculation");
+            
+            //
+            // var resultValue = _scenarioContext.Get<int>("result");
+            //
+            // Assert.That(resultValue, Is.EqualTo(result), "Wrong calculation");
         }
 
         [Given(@"open browser")]
@@ -94,7 +108,7 @@ namespace Inverita.AQA.SpecFlowProject.Steps
         [Then(@"the result should (.*) with status (.*)")]
         public void ThenTheResultShouldWithStatusTrue(int p0, bool status)
         {
-            ScenarioContext.StepIsPending();
+            //ScenarioContext.StepIsPending();
         }
     }
 }
